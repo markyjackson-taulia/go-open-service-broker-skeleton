@@ -19,3 +19,6 @@ deploy-helm: image
 	helm install charts/servicebroker \
 	--name broker-skeleton --namespace broker-skeleton \
 	--set imagePullPolicy=Never
+
+deploy-openshift: image
+	oc process -f openshift/broker-skeleton.yaml | oc create -f
